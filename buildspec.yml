@@ -8,11 +8,11 @@ version: 0.2
      - apt-get install -y jq
      - curl -L https://npmjs.org/install.sh | sh
      - npm -v
+     - npm install -g cfn-create-or-update
  build:
      commands:
      - stackName="cicd-final"
-     - cfn-create-or-update --region us-east-1 --stack-name ecs-microservices --wait --template-body file://infrastructure/ecs.yml --capabilities CAPABILITY_NAMED_IAM
-     - sh deploy.sh us-east-1 ecs-microservices
+     - sh deploy.sh
      - echo "teste" >> elb.txt
  post_build:
      commands:
